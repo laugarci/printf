@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:28:28 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:49:36 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ int	ft_formats(va_list args, const char f)
 		putformats += ft_printstr(va_arg(args, char *));
 /*	else if (f == 'p') //El puntero void * dado como arg se imprime en formato hexadecimal
 		putformats = */
-	else if (f == 'd') //imprime un numero decimal (base 10)
-		putformats += ft_putnbr(va_args(args, int));
-	else if (f == 'i') //imprime un entero en base 10
-		putformats += ft_putnbr(va_args(args, int));
+/*	else if (f == 'd') //imprime un numero decimal (base 10)
+		putformats = ft_putnbr(va_arg(args, int));*/
+/*	else if (f == 'i') //imprime un entero en base 10
+		putformats = ft_putnbr(va_arg(args, int)); */
 /*	else if (f == 'u') //imprime un numero decimal (base 10) sin signo
 		putformats = */
 /*	else if (f == 'x') //imprime un numero hexadecimal (base 16) en minusculas
 		putformats =
 	else if (f == 'X') //imprime un numero hexadecimal (base 16) en mayusculas
 		putformats = */
+	return (putformats);
 }
-
 
 int	ft_printf(char const *str, ...)
 {
@@ -44,7 +44,7 @@ int	ft_printf(char const *str, ...)
 	int	f;
 
 	i = 0;
-	va_start(args, str);
+	va_start (args, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
@@ -64,7 +64,7 @@ int	ft_printf(char const *str, ...)
 
 int main(void)
 {
-	int i = ft_printf("%%");
-	return (0);
-
+	int i;
+	i = ft_printf("%%");
+	return (i);
 }
