@@ -6,32 +6,34 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/20 18:09:02 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:28:28 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_formats(va_list args, char f)
+int	ft_formats(va_list args, const char f)
 {
+	int	putformats;
+
 	if (f == '%')
-		write(1, "%", 1);
+		putformats += ft_percent();
 	else if (f == 'c') //imprime caracter
-		ft_putchar(f);	
+		putformats += ft_putchar(va_arg(args, int));
 	else if (f == 's') //imprime string
-		ft_putstr(f)		
-	else if (f == 'p') //El puntero void * dado como arg se imprime en formato hexadecimal
-
+		putformats += ft_printstr(va_arg(args, char *));
+/*	else if (f == 'p') //El puntero void * dado como arg se imprime en formato hexadecimal
+		putformats = */
 	else if (f == 'd') //imprime un numero decimal (base 10)
-
+		putformats += ft_putnbr(va_args(args, int));
 	else if (f == 'i') //imprime un entero en base 10
-
-	else if (f == 'u') //imprime un numero decimal (base 10) sin signo
-
-	else if (f == 'x') //imprime un numero hexadecimal (base 16) en minusculas
-
+		putformats += ft_putnbr(va_args(args, int));
+/*	else if (f == 'u') //imprime un numero decimal (base 10) sin signo
+		putformats = */
+/*	else if (f == 'x') //imprime un numero hexadecimal (base 16) en minusculas
+		putformats =
 	else if (f == 'X') //imprime un numero hexadecimal (base 16) en mayusculas
-
+		putformats = */
 }
 
 
@@ -47,9 +49,22 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			f = (ft_formats(args, str[i + 1]))
+			f += ft_formats(args, str[i + 1]);
 			i++;	
 		}
+		else
+		{
+			f += ft_putchar(str[i]);
+			i++;
+		}
 	}
-	return(0);
+	va_end(args);
+	return(f);
+}
+
+int main(void)
+{
+	int i = ft_printf("%%");
+	return (0);
+
 }

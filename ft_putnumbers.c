@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 16:31:08 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:25:35 by laugarci         ###   ########.fr       */
+/*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
+/*   Updated: 2022/10/21 15:08:27 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+void	ft_putnbr(int n)
+{
+	char c;
 
-int		ft_printf(char const *str, ...);
-int		ft_formats(va_list args, const char f);
-int		ft_putchar(int c);
-void	ft_putstr(char *str);
-int		ft_printstr(char *str);
-void	ft_putnbr(int n);
-int		ft_percent(void);
-
-#endif
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+		ft_putnbr(n);
+	}
+	else if (n < 10)
+	{
+		c = n + 48;
+		ft_putchar(n);
+	}
+	else
+	{
+		ft_putnbr(n / 10);
+		c = (n % 10) + 48;
+		ft_putchar(c);
+	}
+}

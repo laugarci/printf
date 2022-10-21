@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 17:29:59 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/20 18:09:05 by laugarci         ###   ########.fr       */
+/*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
+/*   Updated: 2022/10/21 15:11:07 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+void	ft_putnbr(int n)
 {
-	write(1, &c, 1);
-}
+	char c;
 
-void	ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[0])
+	if (n < 0)
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, "-", 1);
+		n = -n;
+		ft_putnbr(n);
 	}
-}
-
-int	ft_putnbr(int n)
-{
-}
-
-int	ft_percent(void)
-{
-	write(1, "%", 1);
+	else if (n < 10)
+	{
+		c = n + 48;
+		ft_putchar(n);
+	}
+	else
+	{
+		ft_putnbr(n / 10);
+		c = (n % 10) + 48;
+		ft_putchar(c);
+	}
 }

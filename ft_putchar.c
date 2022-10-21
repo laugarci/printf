@@ -1,28 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_puts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 16:31:08 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:25:35 by laugarci         ###   ########.fr       */
+/*   Created: 2022/10/20 17:29:59 by laugarci          #+#    #+#             */
+/*   Updated: 2022/10/21 15:08:39 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+}
 
-int		ft_printf(char const *str, ...);
-int		ft_formats(va_list args, const char f);
-int		ft_putchar(int c);
-void	ft_putstr(char *str);
-int		ft_printstr(char *str);
-void	ft_putnbr(int n);
-int		ft_percent(void);
+void	ft_putstr(char *str)
+{
+	int i;
 
-#endif
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+int	ft_printstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr("null")
+		return ;
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+
+int	ft_percent(void)
+{
+	write(1, "%", 1);
+}
