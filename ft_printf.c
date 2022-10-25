@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:49:36 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:03:53 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,3 @@ int	ft_printf(char const *str, ...)
 	return(f);
 }
 
-int main(void)
-{
-	int i;
-	i = ft_printf("%%");
-	return (i);
-}
