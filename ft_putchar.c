@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:29:59 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:51:30 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:05:22 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_putchar(int c)
 {
 	write(1, &c, 1);
+	return (1);
 }
 
 void	ft_putstr(char *str)
@@ -36,8 +37,8 @@ int	ft_printstr(char *str)
 	i = 0;
 	if (str == NULL)
 	{
-		ft_putstr("null")
-		return ;
+		ft_putstr("null");
+		return (0);
 	}
 	while (str[i])
 	{
@@ -51,4 +52,5 @@ int	ft_printstr(char *str)
 int	ft_percent(void)
 {
 	write(1, "%", 1);
+	return (0);
 }

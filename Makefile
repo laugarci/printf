@@ -6,7 +6,7 @@
 #    By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 09:51:44 by laugarci          #+#    #+#              #
-#    Updated: 2022/10/20 16:40:51 by laugarci         ###   ########.fr        #
+#    Updated: 2022/10/25 11:13:18 by laugarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ NORM	= norminette -R CheckForbiddenSourceHeader
 RM		= rm -f
 AR		= ar -rcs
 
-SRC_FILES	= ft_printf.c
+SRC_FILES	= ft_printf.c \
+			  ft_numbers.c \
+			  ft_putchar.c \
 
 SRC_OBJ		= $(SRC_FILES:.c=.o)
 

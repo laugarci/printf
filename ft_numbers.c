@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 15:44:09 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:37:41 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,27 @@ int	ft_putnbr(int n)
 		c = (n % 10) + 48;
 		ft_putchar(c);
 	}
+	return (1);
+}
+
+int	ft_hexnum(unsigned int num, int f)
+{
+	if (num >= 16)
+	{
+		ft_hexnum(num / 16, f);
+		ft_hexnum(num % 16, f);
+	}
+	else
+	{
+		if (f <= 9)
+			ft_putchar(num + 48);
+		else
+		{
+			if (f == 'x')
+				ft_putchar(num - 10 + 'a');
+			if (f == 'X')
+				ft_putchar(num - 10 + 'A');
+		};	
+	}
+	return ();
 }

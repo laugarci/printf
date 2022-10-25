@@ -6,35 +6,34 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/21 17:03:53 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:37:34 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_formats(va_list args, const char f)
+int	ft_formats(va_list args, char f)
 {
-	int	putformats;
-
+	int	res;
+	
+	res = 0;
 	if (f == '%')
-		putformats += ft_percent();
+		res = ft_percent();
 	else if (f == 'c') //imprime caracter
-		putformats += ft_putchar(va_arg(args, int));
+		res += ft_putchar(va_arg(args, int));
 	else if (f == 's') //imprime string
-		putformats += ft_printstr(va_arg(args, char *));
+		res += ft_printstr(va_arg(args, char *));
 /*	else if (f == 'p') //El puntero void * dado como arg se imprime en formato hexadecimal
-		putformats = */
-/*	else if (f == 'd') //imprime un numero decimal (base 10)
-		putformats = ft_putnbr(va_arg(args, int));*/
-/*	else if (f == 'i') //imprime un entero en base 10
-		putformats = ft_putnbr(va_arg(args, int)); */
+		res = */
+	else if (f == 'd') //imprime un numero decimal (base 10)
+		res += ft_putnbr(va_arg(args, int));
+	else if (f == 'i') //imprime un entero en base 10
+		res += ft_putnbr(va_arg(args, int));
 /*	else if (f == 'u') //imprime un numero decimal (base 10) sin signo
-		putformats = */
-/*	else if (f == 'x') //imprime un numero hexadecimal (base 16) en minusculas
-		putformats =
-	else if (f == 'X') //imprime un numero hexadecimal (base 16) en mayusculas
-		putformats = */
-	return (putformats);
+		res = */
+	else if (f == 'x' || f == 'X') //imprime un numero hexadecimal (base 16) en minusculas || mayusculas
+		res += ft_hexnum(va_arg(args, unsigned int), f);
+	return (res);
 }
 
 int	ft_printf(char const *str, ...)
@@ -44,7 +43,8 @@ int	ft_printf(char const *str, ...)
 	int	f;
 
 	i = 0;
-	va_start (args, str);
+	f = 0;
+	va_start(args, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
@@ -59,6 +59,5 @@ int	ft_printf(char const *str, ...)
 		}
 	}
 	va_end(args);
-	return(f);
+	return (f);
 }
-
