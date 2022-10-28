@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/25 13:37:41 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:04:22 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,36 @@
 
 int	ft_putnbr(int n)
 {
-	char c;
+	int		len;
+	char	*num;
 
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-		ft_putnbr(n);
-	}
-	else if (n < 10)
-	{
-		c = n + 48;
-		ft_putchar(n);
-	}
-	else
-	{
-		ft_putnbr(n / 10);
-		c = (n % 10) + 48;
-		ft_putchar(c);
-	}
-	return (1);
+	len = 0;
+	num = ft_itoa(n);
+	len = ft_printstr(num);
+	free(num);
+	return (len);
 }
 
-int	ft_hexnum(unsigned int num, int f)
+int	ft_hexnum_len(unsigned int num)
 {
+	int	len;
+
+	len = 0;
+	while (num)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
+}
+
+int	ft_hexnum(unsigned int num, const char f)
+{
+	int	len;
+
+	len = 0;
+	if (num == 0)
+		write(1, "0", 1);
 	if (num >= 16)
 	{
 		ft_hexnum(num / 16, f);
@@ -53,7 +59,8 @@ int	ft_hexnum(unsigned int num, int f)
 				ft_putchar(num - 10 + 'a');
 			if (f == 'X')
 				ft_putchar(num - 10 + 'A');
-		};	
+		}	
 	}
-	return ();
+	len = ft_hexnum_len(num);
+	return (len);
 }
