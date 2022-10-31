@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/28 17:04:25 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:10:17 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (f);
 }
-/*
+
 int main(void)
 {
-	printf("PRINTF BYTES = %i\n", printf("%%%%\n"));
-	printf("FT_PRINTF BYTES = %i\n", ft_printf("%%%%\n"));
+	//printf("PRINTF BYTES = %i\n", printf("%%%%\n"));
+	//printf("FT_PRINTF BYTES = %i\n", ft_printf("%%%%\n"));
 	//ft_printf("%i", 456);
+	printf("%x\n", 0);
+	ft_printf("%x\n", 0);
 	return (0);
-}*/
+}
