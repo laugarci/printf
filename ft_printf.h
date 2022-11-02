@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:31:08 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/28 16:41:35 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/02 16:17:26 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 int		ft_printf(char const *str, ...);
 int		ft_formats(va_list args, char f);
 int		ft_putchar(int c);
-//void	ft_putstr(char *str);
 int		ft_printstr(char *str);
 int		ft_putnbr(int n);
 int		ft_percent(void);
@@ -31,5 +30,7 @@ char	*ft_itoa(int n);
 int		ft_unsigned_len(unsigned int n);
 char	*ft_unsigned(unsigned int n);
 int		ft_putunsigned(unsigned int n);
-
+int		ft_printpointer(unsigned long long ptr);
+int		ft_ptr_len(int n);
+void	ft_putpointer(int n);
 #endif

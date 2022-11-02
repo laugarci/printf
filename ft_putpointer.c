@@ -1,43 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puts.c                                          :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 17:29:59 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/02 13:49:41 by laugarci         ###   ########.fr       */
+/*   Created: 2022/11/02 13:49:51 by laugarci          #+#    #+#             */
+/*   Updated: 2022/11/02 16:20:45 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int		ft_ptr_len(int n)
 {
-	write(1, &c, 1);
-	return (1);
+	int	len;
+
+	len = 0;
+	while (n)
+	{
+		len++;
+		n = n / 16;
+	}
+	return (len);
 }
 
-int	ft_printstr(char *str)
+void	ft_putpointer(int n)
 {
-	int	i;
-
-	i = 0;
-	if (str == NULL)
+	if (n >= 0)
 	{
-		ft_printstr("(null)");
-		return (6);
+		ft_putpointer(n / 16);
+		ft_putpointer(n % 16);
 	}
-	while (str[i])
+	else
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (n <= 9)
+			ft_putchar(n + 48);
+		else
+			ft_putchar(n - 10 + 97);
 	}
-	return (i);
 }
 
-int	ft_percent(void)
+int	ft_printpointer(unsigned long long ptr)
 {
-	write(1, "%", 1);
-	return (1);
+	int	len;
+
+	len = 0;
+	if (ptr == 0)
+		len += write(1, "0x", 2);
+	else
+	{
+		ft_putpointer(ptr);
+		len += ft_ptr_len(ptr);
+	}
+	return (len);
 }

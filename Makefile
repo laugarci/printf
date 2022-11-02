@@ -6,7 +6,7 @@
 #    By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 09:51:44 by laugarci          #+#    #+#              #
-#    Updated: 2022/10/28 16:40:06 by laugarci         ###   ########.fr        #
+#    Updated: 2022/11/02 15:53:20 by laugarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_FILES	= ft_printf.c \
 			  ft_numbers.c \
 			  ft_putchar.c \
 			  ft_itoa.c \
-			  ft_unsigned_num.c
+			  ft_unsigned_num.c \
+			  ft_putpointer.c
 
 SRC_OBJ		= $(SRC_FILES:.c=.o)
 
