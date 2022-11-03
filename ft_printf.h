@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:31:08 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/02 16:17:26 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:46:25 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_unsigned_len(unsigned int n);
 char	*ft_unsigned(unsigned int n);
 int		ft_putunsigned(unsigned int n);
 int		ft_printpointer(unsigned long long ptr);
-int		ft_ptr_len(int n);
-void	ft_putpointer(int n);
+int		ft_ptr_len(unsigned long long n);
+void	ft_putpointer(unsigned long long n);
+void	fft_min_or_may(unsigned int num, const char f);
 #endif

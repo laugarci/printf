@@ -6,12 +6,11 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:35:03 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/02 15:54:33 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:55:25 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_formats(va_list args, char f)
 {
@@ -20,19 +19,19 @@ int	ft_formats(va_list args, char f)
 	res = 0;
 	if (f == '%')
 		res = ft_percent();
-	else if (f == 'c') //imprime caracter
+	else if (f == 'c')
 		res = ft_putchar(va_arg(args, int));
-	else if (f == 's') //imprime string
+	else if (f == 's')
 		res = ft_printstr(va_arg(args, char *));
-	else if (f == 'p') //El puntero void * dado como arg se imprime en formato hexadecimal
+	else if (f == 'p')
 		res += ft_printpointer(va_arg(args, unsigned long long));
-	else if (f == 'd') //imprime un numero decimal (base 10)
+	else if (f == 'd')
 		res = ft_putnbr(va_arg(args, int));
-	else if (f == 'i') //imprime un entero en base 10
+	else if (f == 'i')
 		res = ft_putnbr(va_arg(args, int));
-	else if (f == 'u') //imprime un numero decimal (base 10) sin signo
+	else if (f == 'u')
 		res = ft_putunsigned(va_arg(args, unsigned int));
-	else if (f == 'x' || f == 'X') //imprime un numero hexadecimal (base 16) en minusculas || mayusculas
+	else if (f == 'x' || f == 'X')
 		res = ft_hexnum(va_arg(args, unsigned int), f);
 	return (res);
 }
@@ -46,6 +45,8 @@ int	ft_printf(char const *str, ...)
 	i = 0;
 	f = 0;
 	va_start(args, str);
+	if (!str)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
@@ -62,15 +63,3 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (f);
 }
-/*
-int main(void)
-{
-	//printf("PRINTF BYTES = %i\n", printf("%%%%\n"));
-	//printf("FT_PRINTF BYTES = %i\n", ft_printf("%%%%\n"));
-	//ft_printf("%i", 456);
-	//printf("%x\n", 16);
-	//ft_printf("%x\n", 16);
-	//printf("%x\n", 99);
-	//ft_printf("%x\n", 99);
-	return (0);
-}*/

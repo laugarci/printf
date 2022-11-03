@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/02 13:49:28 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:49:05 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ int	ft_hexnum_len(unsigned int num)
 	return (len);
 }
 
+void	ft_min_or_may(unsigned int num, const char f)
+{
+	if (f == 'x')
+		ft_putchar(num - 10 + 97);
+	if (f == 'X')
+		ft_putchar(num - 10 + 65);
+}
+
 int	ft_hexnum(unsigned int num, const char f)
 {
 	int	len;
@@ -57,12 +65,7 @@ int	ft_hexnum(unsigned int num, const char f)
 		if (num <= 9)
 			ft_putchar(num + 48);
 		else
-		{
-			if (f == 'x')
-				ft_putchar(num - 10 + 97);
-			if (f == 'X')
-				ft_putchar(num - 10 + 65);
-		}	
+			ft_min_or_may(num, f);
 	}
 	len = ft_hexnum_len(num);
 	return (len);
