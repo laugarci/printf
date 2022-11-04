@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:31:01 by laugarci          #+#    #+#             */
-/*   Updated: 2022/10/28 16:50:35 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:20:47 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_unsigned(unsigned int n)
 	len = ft_unsigned_len(n);
 	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
-		return (0);
+		return (NULL);
 	num[len] = '\0';
 	while (n != 0)
 	{
@@ -48,13 +48,21 @@ int	ft_putunsigned(unsigned int n)
 {
 	int		len;
 	char	*num;
+	int		aux;
 
 	len = 0;
 	if (n == 0)
+	{
 		len += write(1, "0", 1);
+		aux = len;
+		if (aux < 0)
+			return (-1);
+	}
 	else
 	{
 		num = ft_unsigned(n);
+		if (!num)
+			return (-1);
 		len += ft_printstr(num);
 		free(num);
 	}

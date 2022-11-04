@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:49:51 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/03 10:49:35 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:19:18 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_ptr_len(unsigned long long n)
 	return (len);
 }
 
-void	ft_putpointer(unsigned long long n)
+int	ft_putpointer(unsigned long long n)
 {
 	if (n >= 16)
 	{
@@ -35,20 +35,32 @@ void	ft_putpointer(unsigned long long n)
 	else
 	{
 		if (n <= 9)
-			ft_putchar(n + 48);
-		else
-			ft_putchar(n - 10 + 97);
+			if (ft_putchar(n + 48) < 0)
+				return (-1);
+		if (n > 9)
+			if (ft_putchar(n - 10 + 97) < 0)
+				return (-1);
 	}
+	return (1);
 }
 
 int	ft_printpointer(unsigned long long ptr)
 {
 	int	len;
+	int	aux;
 
 	len = 0;
 	len += write(1, "0x", 2);
+	aux = len;
+	if (aux < 0)
+		return (-1);
 	if (ptr == 0)
+	{
 		len += write(1, "0", 1);
+		aux = len;
+		if (aux < 0)
+			return (-1);
+	}
 	else
 	{
 		ft_putpointer(ptr);

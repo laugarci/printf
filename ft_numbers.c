@@ -6,7 +6,7 @@
 /*   By: laugarci <laugarci@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:03:17 by laugarci          #+#    #+#             */
-/*   Updated: 2022/11/03 10:49:05 by laugarci         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:04:28 by laugarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	ft_putnbr(int n)
 
 	len = 0;
 	num = ft_itoa(n);
+	if (!num)
+		return (-1);
 	len = ft_printstr(num);
 	free(num);
+	if (len < 0)
+		return (-1);
 	return (len);
 }
 
@@ -37,12 +41,19 @@ int	ft_hexnum_len(unsigned int num)
 	return (len);
 }
 
-void	ft_min_or_may(unsigned int num, const char f)
+int	ft_min_or_may(unsigned int num, const char f)
 {
 	if (f == 'x')
-		ft_putchar(num - 10 + 97);
+	{
+		if (ft_putchar(num - 10 + 97) < 0)
+			return (-1);
+	}
 	if (f == 'X')
-		ft_putchar(num - 10 + 65);
+	{
+		if (ft_putchar(num - 10 + 65) < 0)
+			return (-1);
+	}
+	return (0);
 }
 
 int	ft_hexnum(unsigned int num, const char f)
@@ -51,21 +62,22 @@ int	ft_hexnum(unsigned int num, const char f)
 
 	len = 0;
 	if (num == 0)
-	{
-		write(1, "0", 1);
-		return (1);
-	}
+		return (ft_putchar('0'));
 	if (num >= 16)
 	{
-		ft_hexnum(num / 16, f);
-		ft_hexnum(num % 16, f);
+		if (ft_hexnum(num / 16, f) < 0)
+			return (-1);
+		if (ft_hexnum(num % 16, f) < 0)
+			return (-1);
 	}
 	else
 	{
 		if (num <= 9)
-			ft_putchar(num + 48);
-		else
-			ft_min_or_may(num, f);
+			if (ft_putchar(num + 48) < 0)
+				return (-1);
+		if (num >= 10)
+			if (ft_min_or_may(num, f) < 0)
+				return (-1);
 	}
 	len = ft_hexnum_len(num);
 	return (len);
